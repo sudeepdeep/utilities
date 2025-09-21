@@ -389,7 +389,7 @@ console.log(grouped);`}</code>
           </div>
           <div className="border-t border-slate-800 mt-8 pt-8 text-center">
             <p className="text-slate-400">
-              © 2025 CodeInStock. All rights reserved.
+              V1.0.1 © 2025 CodeInStock. All rights reserved.
             </p>
 
             <p className="text-slate-400 text-[14px]">

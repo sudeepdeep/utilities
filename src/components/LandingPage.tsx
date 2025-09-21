@@ -56,7 +56,7 @@ const LandingPage: React.FC = () => {
   const stats = [
     { label: "Code Utilities", value: "50+" },
     { label: "UI Components", value: "25+" },
-    { label: "Categories", value: "6" },
+    { label: "Categories", value: "8" },
     { label: "Ready to Use", value: "100%" },
   ];
 

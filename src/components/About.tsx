@@ -251,7 +251,7 @@ export default function AboutPage() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
               <StatCard number="50+" label="Code Utilities" icon="⚡" />
               <StatCard number="25+" label="UI Components" icon="👨‍💻" />
-              <StatCard number="6" label="Categories" icon="🔧" />
+              <StatCard number="8" label="Categories" icon="🔧" />
               <StatCard number="100%" label="Ready to Use" icon="🌍" />
             </div>
           </div>

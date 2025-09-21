@@ -12,6 +12,7 @@ import Logo from "../assets/csilogo.png";
 import React from "react";
 import { Link } from "react-router-dom";
 import IconWrapper from "../utils/IconWrapper";
+import { LazyImage } from "./LazyImage";
 
 const LandingPage: React.FC = () => {
   const features = [
@@ -68,7 +69,8 @@ const LandingPage: React.FC = () => {
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-3">
               <IconWrapper className="w-12 h-12">
-                <img src={Logo} />
+                {/* <img src={Logo} /> */}
+                <LazyImage src={Logo} />
               </IconWrapper>
               <span className="text-xl ml-[-10px] font-bold text-white">
                 CodeInStock

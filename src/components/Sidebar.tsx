@@ -6,6 +6,7 @@ import type { Tool } from "../types/index.js";
 import { Link } from "react-router-dom";
 import IconWrapper from "../utils/IconWrapper";
 import Logo from "../assets/csilogo.png";
+import { LazyImage } from "./LazyImage.js";
 
 interface SidebarProps {
   tools: Tool[];
@@ -79,7 +80,8 @@ const Sidebar: React.FC<SidebarProps> = ({
         <div className="flex items-center justify-between mb-4">
           <Link to={"/"} className="flex items-center gap-3">
             <IconWrapper className="w-12 h-12">
-              <img src={Logo} />
+              <LazyImage src={Logo} />
+              {/* <img src={Logo} /> */}
             </IconWrapper>
             <h1 className="text-xl font-bold text-white ml-[-10px]">
               CodeInStock

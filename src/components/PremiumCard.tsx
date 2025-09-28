@@ -3,18 +3,11 @@ import { CrownIcon } from "../assets/icons/icons";
 import IconWrapper from "../utils/IconWrapper";
 
 interface PremiumCardProps {
-  title: string;
-  description: string;
   price: number;
   onPayNow: () => void;
 }
 
-const PremiumCard: React.FC<PremiumCardProps> = ({
-  title,
-  description,
-  price,
-  onPayNow,
-}) => {
+const PremiumCard: React.FC<PremiumCardProps> = ({ price, onPayNow }) => {
   return (
     <div className="h-[600px] flex justify-center bg-slate-900 p-8">
       <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full overflow-hidden border border-gray-200">

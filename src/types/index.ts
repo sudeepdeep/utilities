@@ -19,11 +19,14 @@ export interface Tool {
     | "forms"
     | "components"
     | "regex"
+    | "games"
     | "system";
   code: string;
   inputs?: any[];
   output?: string;
   icon?: any;
+  isFree: boolean;
+  price?: number;
 }
 
 export type Category = {

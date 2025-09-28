@@ -45,6 +45,7 @@ import {
   Wifi,
 } from "../assets/icons/icons.tsx";
 import type { Tool } from "../types/index.js";
+import { games } from "./games.ts";
 
 export const tools: Tool[] = [
   // Regular Utils
@@ -54,6 +55,8 @@ export const tools: Tool[] = [
     description: "Convert between different currencies with real-time rates",
     category: "regular",
     icon: Dollar,
+    isFree: true,
+    price: 0,
     code: `// Currency Converter
 function convertCurrency(amount, fromCurrency, toCurrency, rates) {
   if (fromCurrency === toCurrency) return amount;
@@ -103,6 +106,8 @@ console.log(\`100 USD = \${result} EUR\`);`,
     description: "Generate secure passwords with customizable options",
     category: "regular",
     icon: Lock,
+    isFree: false,
+    price: 99,
     code: `// Password Generator
 function generatePassword(length = 12, includeSymbols = true, includeNumbers = true) {
   const lowercase = 'abcdefghijklmnopqrstuvwxyz';
@@ -151,6 +156,8 @@ console.log('Generated password:', password);`,
     description: "Generate QR codes for text, URLs, and data",
     category: "regular",
     icon: QrCode,
+    isFree: true,
+    price: 0,
     code: `// QR Code Generator (Simulation)
 function generateQRCode(text, size = 200) {
   // This is a simulation - in a real app you'd use a QR code library
@@ -211,6 +218,8 @@ console.log(qrCode.asciiArt);`,
     description: "Convert time between different timezones",
     category: "regular",
     icon: Clock,
+    isFree: true,
+    price: 0,
     code: `// Fixed Timezone Converter
 function convertTimezone(time, fromTimezone, toTimezone) {
   // Timezone offsets from UTC (accounting for standard time, not DST)
@@ -362,6 +371,8 @@ console.log('Japan:', currentJST.time)`,
     description: "Encode and decode Base64 strings",
     category: "regular",
     icon: FileText,
+    isFree: false,
+    price: 149,
     code: `// Base64 Encoder/Decoder
 function encodeBase64(text) {
   return btoa(text);
@@ -404,6 +415,8 @@ console.log('Decoded:', decoded);`,
     description: "Convert between different units of measurement",
     category: "regular",
     icon: Ruler,
+    isFree: true,
+    price: 0,
     code: `// Unit Converter
 const conversions = {
   length: {
@@ -471,6 +484,8 @@ console.log(\`100 meters = \${result.toFixed(2)} feet\`);`,
     description: "Calculate Body Mass Index and health category",
     category: "regular",
     icon: Heart,
+    isFree: true,
+    price: 0,
     code: `// BMI Calculator
 function calculateBMI(weight, height, unit = 'metric') {
   let bmi;
@@ -524,6 +539,8 @@ console.log(\`BMI: \${result.bmi} - \${result.category}\`);`,
     description: "Create short URLs and expand them back to original URLs",
     category: "regular",
     icon: Link,
+    isFree: true,
+    price: 0,
     code: `// URL Shortener
 function createShortUrl(originalUrl, customAlias = '') {
   // Simple URL shortener simulation
@@ -601,6 +618,8 @@ console.log('Expanded URL:', expanded.originalUrl);`,
     description: "Generate harmonious color palettes",
     category: "creative",
     icon: Palette,
+    isFree: true,
+    price: 0,
     code: `// Color Palette Generator
 function generateColorPalette(baseColor, count = 5) {
   const hexToHsl = (hex) => {
@@ -675,6 +694,8 @@ console.log('Generated palette:', palette);`,
     description: "Generate placeholder text for designs",
     category: "creative",
     icon: Type,
+    isFree: true,
+    price: 0,
     code: `// Lorem Ipsum Generator
 function generateLoremIpsum(wordCount = 50) {
   const words = [
@@ -734,6 +755,8 @@ console.log(lorem);`,
     description: "Generate CSS gradient code",
     category: "creative",
     icon: Paintbrush,
+    isFree: true,
+    price: 0,
     code: `// CSS Gradient Generator
 function generateGradient(color1, color2, direction = 'to right', type = 'linear') {
   const directions = {
@@ -801,6 +824,8 @@ console.log('Preview:', result.preview);`,
     description: "Format and validate JSON data",
     category: "developer",
     icon: Code,
+    isFree: true,
+    price: 0,
     code: `// JSON Formatter
 function formatJSON(jsonString, indent = 2) {
   try {
@@ -860,6 +885,8 @@ console.log('Formatted JSON:', formatted.formatted);`,
     description: "Generate various hash values for text",
     category: "developer",
     icon: Hash,
+    isFree: true,
+    price: 0,
     code: `// Hash Generator (Simple hash functions)
 function simpleHash(str) {
   let hash = 0;
@@ -909,6 +936,8 @@ console.log('SDBM Hash:', sdbmHash(text));`,
     description: "Generate conventional commit messages",
     category: "developer",
     icon: GitCommit,
+    isFree: true,
+    price: 0,
     code: `// Commit Message Generator
 function generateCommitMessage(type, scope, description, breaking = false) {
   const types = {
@@ -987,6 +1016,8 @@ console.log('Type description:', commit.type);`,
       "Encrypt and decrypt text using Base64 and simple cipher methods",
     category: "developer",
     icon: Shield,
+    isFree: true,
+    price: 0,
     code: `// Text Encrypt/Decrypt
 function encryptText(text, method = 'base64') {
   switch (method) {
@@ -1088,6 +1119,8 @@ console.log('Decrypted:', decrypted);`,
     description: "Test and validate regular expressions with sample text",
     category: "regex",
     icon: Regex,
+    isFree: true,
+    price: 0,
     code: `// Regex Tester
 function testRegex(pattern, text, flags = 'g') {
   try {
@@ -1179,6 +1212,8 @@ result.matches.forEach((match, i) => {
     description: "Validate email addresses using regex patterns",
     category: "regex",
     icon: Mail,
+    isFree: true,
+    price: 0,
     code: `// Email Validator
 function validateEmail(email) {
   // Comprehensive email regex pattern
@@ -1238,6 +1273,8 @@ testEmails.forEach(email => {
     description: "Validate various phone number formats",
     category: "regex",
     icon: Phone,
+    isFree: true,
+    price: 0,
     code: `// Phone Number Validator
 function validatePhone(phone, format = 'us') {
   const patterns = {
@@ -1315,6 +1352,8 @@ testPhones.forEach(test => {
     description: "Validate URLs and extract components",
     category: "regex",
     icon: Link,
+    isFree: true,
+    price: 0,
     code: `// URL Validator
 function validateURL(url) {
   const urlPattern = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?(\?[;&a-z\d%_.~+=-]*)?(#[-a-z\d_]*)?$/i;
@@ -1399,6 +1438,8 @@ testUrls.forEach(url => {
     description: "Validate password strength with multiple criteria",
     category: "regex",
     icon: Lock,
+    isFree: true,
+    price: 0,
     code: `// Password Strength Validator
 function validatePassword(password, requirements = {}) {
   const defaultRequirements = {
@@ -1516,6 +1557,8 @@ testPasswords.forEach(pwd => {
     description: "Validate credit card numbers and identify card types",
     category: "regex",
     icon: CreditCard,
+    isFree: true,
+    price: 0,
     code: `// Credit Card Validator
 function validateCreditCard(cardNumber) {
   // Remove spaces and hyphens
@@ -1628,6 +1671,8 @@ testCards.forEach(card => {
     description: "Generate secure API keys and tokens",
     category: "developer",
     icon: Key,
+    isFree: true,
+    price: 0,
     code: `// API Key Generator
 function generateApiKey(length = 32, format = 'hex') {
   const charset = {
@@ -1715,6 +1760,8 @@ console.log('JWT Token:', generateJWT({ role: 'admin' }));`,
     description: "Convert between binary, decimal, and hexadecimal",
     category: "developer",
     icon: Binary,
+    isFree: true,
+    price: 0,
     code: `// Binary/Hex Converter
 function convertNumber(value, fromBase, toBase) {
   try {
@@ -1833,6 +1880,8 @@ console.log(\`Binary 11111111 = Decimal \${binaryResult.result}\`);`,
     description: "Format and beautify code (JSON, CSS, HTML)",
     category: "developer",
     icon: Braces,
+    isFree: true,
+    price: 0,
     code: `// Code Formatter
 function formatCode(code, language) {
   try {
@@ -1959,6 +2008,8 @@ if (result.success) {
     description: "Validate and analyze URLs",
     category: "developer",
     icon: Network,
+    isFree: true,
+    price: 0,
     code: `// URL Validator
 function validateURL(url) {
   try {
@@ -2032,6 +2083,8 @@ console.log('Path Depth:', result.pathDepth);`,
     description: "Generate optimized image URLs and placeholders",
     category: "developer",
     icon: Image,
+    isFree: true,
+    price: 0,
     code: `// Image URL Generator & Optimizer
 function generateImageURL(width, height, category = 'nature', format = 'jpg') {
   const services = {
@@ -2123,6 +2176,8 @@ console.log('Resized dimensions:', \`\${resized.width}x\${resized.height}\`);`,
     description: "Scientific calculator with advanced mathematical functions",
     category: "regular",
     icon: Calculator,
+    isFree: true,
+    price: 0,
     code: `// Advanced Calculator
 class AdvancedCalculator {
   constructor() {
@@ -2246,6 +2301,8 @@ console.log('2 + 3 * 4 =', calc.evaluate('2 + 3 * 4'));`,
     description: "Generate inspirational quotes",
     category: "fun",
     icon: Quote,
+    isFree: true,
+    price: 0,
     code: `// Random Quote Generator
 function generateRandomQuote() {
   const quotes = [
@@ -2275,6 +2332,8 @@ console.log(\`"\${quote.text}" - \${quote.author}\`);`,
     description: "Analyze the sentiment of text (basic implementation)",
     category: "fun",
     icon: MessageSquare,
+    isFree: true,
+    price: 0,
     code: `// Simple Text Sentiment Analyzer
 function analyzeSentiment(text) {
   const positiveWords = [
@@ -2346,6 +2405,8 @@ console.log('Confidence:', result.confidence);`,
     description: "Interactive login form with validation",
     category: "forms",
     icon: User,
+    isFree: true,
+    price: 0,
     code: `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -2586,6 +2647,8 @@ console.log('Confidence:', result.confidence);`,
     description: "Professional contact form with validation",
     category: "forms",
     icon: Mail,
+    isFree: true,
+    price: 0,
     code: `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -2923,6 +2986,8 @@ console.log('Confidence:', result.confidence);`,
     description: "Secure payment form with card details",
     category: "forms",
     icon: FileText,
+    isFree: true,
+    price: 0,
     code: `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -3457,6 +3522,8 @@ console.log('Confidence:', result.confidence);`,
     description: "Collection of modern card components with different styles",
     category: "components",
     icon: FileText,
+    isFree: true,
+    price: 0,
     code: `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -3868,6 +3935,8 @@ console.log('Confidence:', result.confidence);`,
     description: "Various button styles and states for modern web applications",
     category: "components",
     icon: User,
+    isFree: true,
+    price: 0,
     code: `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -4309,6 +4378,8 @@ console.log('Confidence:', result.confidence);`,
       "Collection of animated loading spinners and progress indicators",
     category: "components",
     icon: Clock,
+    isFree: true,
+    price: 0,
     code: `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -4819,6 +4890,8 @@ console.log('Confidence:', result.confidence);`,
       "Interactive data table with sorting, filtering, and search functionality",
     category: "components",
     icon: FileText,
+    isFree: true,
+    price: 0,
     code: `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5464,6 +5537,8 @@ console.log('Confidence:', result.confidence);`,
     description: "Collection of modal dialogs and popup components",
     category: "components",
     icon: MessageSquare,
+    isFree: true,
+    price: 0,
     code: `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6071,6 +6146,8 @@ console.log('Confidence:', result.confidence);`,
       "Various navigation components including navbars, breadcrumbs, and tabs",
     category: "components",
     icon: Globe,
+    isFree: true,
+    price: 0,
     code: `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6607,136 +6684,235 @@ console.log('Confidence:', result.confidence);`,
     description: "Create Pinterest-style masonry grid layouts",
     category: "components",
     icon: Grid,
-    code: `// Masonry Grid Component
-function generateMasonryGrid(items = 12, columns = 3) {
-  const gridHTML = \`
-    <div class="masonry-container">
-      <div class="masonry-grid" id="masonryGrid">
-        \${Array.from({ length: items }, (_, i) => \`
-          <div class="masonry-item" style="height: \${Math.floor(Math.random() * 200) + 150}px;">
-            <div class="item-content">
-              <img src="https://picsum.photos/300/\${Math.floor(Math.random() * 300) + 200}?random=\${i}" 
-                   alt="Item \${i + 1}" loading="lazy">
-              <div class="item-overlay">
-                <h3>Item \${i + 1}</h3>
-                <p>Beautiful masonry item with random height</p>
-              </div>
-            </div>
-          </div>
-        \`).join('')}
-      </div>
-    </div>
-    
+    isFree: true,
+    price: 0,
+    code: `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masonry Grid Layout</title>
     <style>
-      .masonry-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px;
-      }
-      
-      .masonry-grid {
-        display: grid;
-        grid-template-columns: repeat(\${columns}, 1fr);
-        grid-gap: 20px;
-        grid-auto-rows: 10px;
-      }
-      
-      .masonry-item {
-        position: relative;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        cursor: pointer;
-      }
-      
-      .masonry-item:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-      }
-      
-      .item-content {
-        position: relative;
-        height: 100%;
-        overflow: hidden;
-      }
-      
-      .item-content img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.3s ease;
-      }
-      
-      .masonry-item:hover img {
-        transform: scale(1.05);
-      }
-      
-      .item-overlay {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
-        color: white;
-        padding: 20px;
-        transform: translateY(100%);
-        transition: transform 0.3s ease;
-      }
-      
-      .masonry-item:hover .item-overlay {
-        transform: translateY(0);
-      }
-      
-      .item-overlay h3 {
-        margin: 0 0 8px 0;
-        font-size: 1.2rem;
-        font-weight: 600;
-      }
-      
-      .item-overlay p {
-        margin: 0;
-        opacity: 0.9;
-        font-size: 0.9rem;
-      }
-      
-      @media (max-width: 768px) {
-        .masonry-grid {
-          grid-template-columns: repeat(2, 1fr);
-          grid-gap: 15px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-      }
-      
-      @media (max-width: 480px) {
-        .masonry-grid {
-          grid-template-columns: 1fr;
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
         }
-      }
+        
+        .masonry-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .masonry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-gap: 20px;
+            grid-auto-rows: 10px;
+        }
+        
+        .masonry-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            background: white;
+        }
+        
+        .masonry-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .item-content {
+            position: relative;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .item-content img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .masonry-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .item-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .masonry-item:hover .item-overlay {
+            transform: translateY(0);
+        }
+        
+        .item-overlay h3 {
+            margin: 0 0 8px 0;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        .item-overlay p {
+            margin: 0;
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+        
+        .controls {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .masonry-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-gap: 15px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .masonry-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .controls {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
     </style>
-  \`;
-  
-  return gridHTML;
-}
+</head>
+<body>
+    <div class="masonry-container">
+        <h1>Masonry Grid Layout</h1>
+        
+        <div class="controls">
+            <button class="btn" onclick="addItems(5)">Add 5 Items</button>
+            <button class="btn" onclick="shuffleItems()">Shuffle</button>
+            <button class="btn" onclick="clearGrid()">Clear Grid</button>
+        </div>
+        
+        <div class="masonry-grid" id="masonryGrid">
+            <!-- Items will be generated by JavaScript -->
+        </div>
+    </div>
 
-// Initialize masonry with dynamic heights
-function initializeMasonry() {
-  const items = document.querySelectorAll('.masonry-item');
-  items.forEach(item => {
-    const height = parseInt(item.style.height);
-    const rowSpan = Math.ceil((height + 20) / 10);
-    item.style.gridRowEnd = \`span \${rowSpan}\`;
-  });
-}
-
-// Render the masonry grid
-const masonryHTML = generateMasonryGrid(15, 3);
-document.body.innerHTML = masonryHTML;
-
-// Initialize masonry after DOM is updated
-setTimeout(() => {
-  initializeMasonry();
-  console.log('Masonry grid rendered with responsive design');
-}, 100);`,
+    <script>
+        let itemCount = 0;
+        
+        function generateMasonryItems(count = 12) {
+            const grid = document.getElementById('masonryGrid');
+            
+            for (let i = 0; i < count; i++) {
+                const item = document.createElement('div');
+                item.className = 'masonry-item';
+                
+                const height = Math.floor(Math.random() * 200) + 200;
+                item.style.height = height + 'px';
+                
+                const rowSpan = Math.ceil((height + 20) / 10);
+                item.style.gridRowEnd = 'span ' + rowSpan;
+                
+                item.innerHTML = \`
+                    <div class="item-content">
+                        <img src="https://picsum.photos/400/\${height}?random=\${itemCount + i}" 
+                             alt="Item \${itemCount + i + 1}" 
+                             loading="lazy"
+                             onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OTk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlPC90ZXh0Pjwvc3ZnPic">
+                        <div class="item-overlay">
+                            <h3>Item \${itemCount + i + 1}</h3>
+                            <p>Beautiful masonry item with random height (\${height}px)</p>
+                        </div>
+                    </div>
+                \`;
+                
+                grid.appendChild(item);
+            }
+            
+            itemCount += count;
+        }
+        
+        function addItems(count = 5) {
+            generateMasonryItems(count);
+        }
+        
+        function shuffleItems() {
+            const grid = document.getElementById('masonryGrid');
+            const items = Array.from(grid.children);
+            
+            // Shuffle array
+            for (let i = items.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [items[i], items[j]] = [items[j], items[i]];
+            }
+            
+            // Clear grid and re-append shuffled items
+            grid.innerHTML = '';
+            items.forEach(item => grid.appendChild(item));
+        }
+        
+        function clearGrid() {
+            document.getElementById('masonryGrid').innerHTML = '';
+            itemCount = 0;
+        }
+        
+        // Initialize with some items
+        document.addEventListener('DOMContentLoaded', function() {
+            generateMasonryItems(12);
+        });
+    </script>
+</body>
+</html>`,
     inputs: [
       {
         name: "items",
@@ -6760,256 +6936,364 @@ setTimeout(() => {
     description: "Modern photo gallery with lightbox modal",
     category: "components",
     icon: Image,
-    code: `// Photo Gallery with Lightbox
-function generatePhotoGallery(photoCount = 9) {
-  const galleryHTML = \`
-    <div class="gallery-container">
-      <h2 class="gallery-title">Photo Gallery</h2>
-      <div class="gallery-grid">
-        \${Array.from({ length: photoCount }, (_, i) => \`
-          <div class="gallery-item" onclick="openLightbox(\${i})">
-            <img src="https://picsum.photos/400/300?random=\${i}" 
-                 alt="Photo \${i + 1}" 
-                 loading="lazy">
-            <div class="gallery-overlay">
-              <div class="overlay-icon">🔍</div>
-            </div>
-          </div>
-        \`).join('')}
-      </div>
-      
-      <!-- Lightbox Modal -->
-      <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-        <div class="lightbox-content">
-          <span class="lightbox-close">&times;</span>
-          <img class="lightbox-image" id="lightboxImage" src="">
-          <div class="lightbox-nav">
-            <button class="nav-btn prev-btn" onclick="event.stopPropagation(); navigatePhoto(-1)">‹</button>
-            <button class="nav-btn next-btn" onclick="event.stopPropagation(); navigatePhoto(1)">›</button>
-          </div>
-          <div class="lightbox-counter" id="lightboxCounter"></div>
-        </div>
-      </div>
-    </div>
-    
+    isFree: true,
+    price: 0,
+    code: `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery</title>
     <style>
-      .gallery-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      }
-      
-      .gallery-title {
-        text-align: center;
-        font-size: 2.5rem;
-        margin-bottom: 2rem;
-        color: #333;
-        font-weight: 300;
-      }
-      
-      .gallery-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 20px;
-      }
-      
-      .gallery-item {
-        position: relative;
-        aspect-ratio: 4/3;
-        overflow: hidden;
-        border-radius: 12px;
-        cursor: pointer;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease;
-      }
-      
-      .gallery-item:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-      }
-      
-      .gallery-item img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.3s ease;
-      }
-      
-      .gallery-item:hover img {
-        transform: scale(1.1);
-      }
-      
-      .gallery-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.5);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-      
-      .gallery-item:hover .gallery-overlay {
-        opacity: 1;
-      }
-      
-      .overlay-icon {
-        font-size: 2rem;
-        color: white;
-        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-      }
-      
-      .lightbox {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.9);
-        z-index: 1000;
-        justify-content: center;
-        align-items: center;
-      }
-      
-      .lightbox-content {
-        position: relative;
-        max-width: 90%;
-        max-height: 90%;
-        text-align: center;
-      }
-      
-      .lightbox-image {
-        max-width: 100%;
-        max-height: 80vh;
-        border-radius: 8px;
-        box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
-      }
-      
-      .lightbox-close {
-        position: absolute;
-        top: -40px;
-        right: -40px;
-        color: white;
-        font-size: 2rem;
-        cursor: pointer;
-        background: rgba(255, 255, 255, 0.2);
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: background 0.3s ease;
-      }
-      
-      .lightbox-close:hover {
-        background: rgba(255, 255, 255, 0.3);
-      }
-      
-      .lightbox-nav {
-        position: absolute;
-        top: 50%;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        transform: translateY(-50%);
-        pointer-events: none;
-      }
-      
-      .nav-btn {
-        background: rgba(255, 255, 255, 0.2);
-        border: none;
-        color: white;
-        font-size: 2rem;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        cursor: pointer;
-        pointer-events: all;
-        transition: background 0.3s ease;
-      }
-      
-      .nav-btn:hover {
-        background: rgba(255, 255, 255, 0.3);
-      }
-      
-      .lightbox-counter {
-        color: white;
-        margin-top: 20px;
-        font-size: 1.1rem;
-      }
-      
-      @media (max-width: 768px) {
-        .gallery-grid {
-          grid-template-columns: repeat(2, 1fr);
-          gap: 15px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
         }
         
         .gallery-title {
-          font-size: 2rem;
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: white;
+            font-weight: 300;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
-      }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 4/3;
+            overflow: hidden;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        .overlay-icon {
+            font-size: 2rem;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            text-align: center;
+        }
+        
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 8px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.2);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+        
+        .lightbox-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+        
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 2rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            pointer-events: all;
+            transition: background 0.3s ease;
+        }
+        
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .lightbox-counter {
+            color: white;
+            margin-top: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .controls {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .gallery-title {
+                font-size: 2rem;
+            }
+            
+            .lightbox-close {
+                top: 10px;
+                right: 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
-  \`;
-  
-  return galleryHTML;
-}
+</head>
+<body>
+    <div class="gallery-container">
+        <h1 class="gallery-title">Photo Gallery</h1>
+        
+        <div class="controls">
+            <button class="btn" onclick="addPhotos(3)">Add 3 Photos</button>
+            <button class="btn" onclick="shufflePhotos()">Shuffle</button>
+            <button class="btn" onclick="clearGallery()">Clear</button>
+        </div>
+        
+        <div class="gallery-grid" id="galleryGrid">
+            <!-- Photos will be generated by JavaScript -->
+        </div>
+        
+        <!-- Lightbox Modal -->
+        <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+            <div class="lightbox-content">
+                <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+                <img class="lightbox-image" id="lightboxImage" src="">
+                <div class="lightbox-nav">
+                    <button class="nav-btn prev-btn" onclick="event.stopPropagation(); navigatePhoto(-1)">‹</button>
+                    <button class="nav-btn next-btn" onclick="event.stopPropagation(); navigatePhoto(1)">›</button>
+                </div>
+                <div class="lightbox-counter" id="lightboxCounter"></div>
+            </div>
+        </div>
+    </div>
 
-let currentPhotoIndex = 0;
-const totalPhotos = 9;
-
-function openLightbox(index) {
-  currentPhotoIndex = index;
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImage = document.getElementById('lightboxImage');
-  const counter = document.getElementById('lightboxCounter');
-  
-  lightboxImage.src = \`https://picsum.photos/800/600?random=\${index}\`;
-  counter.textContent = \`\${index + 1} / \${totalPhotos}\`;
-  lightbox.style.display = 'flex';
-  
-  // Prevent body scroll
-  document.body.style.overflow = 'hidden';
-}
-
-function closeLightbox() {
-  document.getElementById('lightbox').style.display = 'none';
-  document.body.style.overflow = 'auto';
-}
-
-function navigatePhoto(direction) {
-  currentPhotoIndex += direction;
-  
-  if (currentPhotoIndex < 0) currentPhotoIndex = totalPhotos - 1;
-  if (currentPhotoIndex >= totalPhotos) currentPhotoIndex = 0;
-  
-  const lightboxImage = document.getElementById('lightboxImage');
-  const counter = document.getElementById('lightboxCounter');
-  
-  lightboxImage.src = \`https://picsum.photos/800/600?random=\${currentPhotoIndex}\`;
-  counter.textContent = \`\${currentPhotoIndex + 1} / \${totalPhotos}\`;
-}
-
-// Keyboard navigation
-document.addEventListener('keydown', function(e) {
-  const lightbox = document.getElementById('lightbox');
-  if (lightbox && lightbox.style.display === 'flex') {
-    if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowLeft') navigatePhoto(-1);
-    if (e.key === 'ArrowRight') navigatePhoto(1);
-  }
-});
-
-// Render the gallery
-document.body.innerHTML = generatePhotoGallery(9);
-
-console.log('Photo gallery with lightbox functionality rendered');`,
+    <script>
+        let currentPhotoIndex = 0;
+        let totalPhotos = 0;
+        let photoCount = 0;
+        
+        function generatePhotos(count = 9) {
+            const grid = document.getElementById('galleryGrid');
+            
+            for (let i = 0; i < count; i++) {
+                const item = document.createElement('div');
+                item.className = 'gallery-item';
+                item.onclick = () => openLightbox(photoCount + i);
+                
+                item.innerHTML = \`
+                    <img src="https://picsum.photos/400/300?random=\${photoCount + i}" 
+                         alt="Photo \${photoCount + i + 1}" 
+                         loading="lazy"
+                         onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OTk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlPC90ZXh0Pjwvc3ZnPic">
+                    <div class="gallery-overlay">
+                        <div class="overlay-icon">🔍</div>
+                    </div>
+                \`;
+                
+                grid.appendChild(item);
+            }
+            
+            photoCount += count;
+            totalPhotos = photoCount;
+        }
+        
+        function openLightbox(index) {
+            currentPhotoIndex = index;
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightboxImage');
+            const counter = document.getElementById('lightboxCounter');
+            
+            lightboxImage.src = \`https://picsum.photos/800/600?random=\${index}\`;
+            counter.textContent = \`\${index + 1} / \${totalPhotos}\`;
+            lightbox.style.display = 'flex';
+            
+            // Prevent body scroll
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        function navigatePhoto(direction) {
+            currentPhotoIndex += direction;
+            
+            if (currentPhotoIndex < 0) currentPhotoIndex = totalPhotos - 1;
+            if (currentPhotoIndex >= totalPhotos) currentPhotoIndex = 0;
+            
+            const lightboxImage = document.getElementById('lightboxImage');
+            const counter = document.getElementById('lightboxCounter');
+            
+            lightboxImage.src = \`https://picsum.photos/800/600?random=\${currentPhotoIndex}\`;
+            counter.textContent = \`\${currentPhotoIndex + 1} / \${totalPhotos}\`;
+        }
+        
+        function addPhotos(count = 3) {
+            generatePhotos(count);
+        }
+        
+        function shufflePhotos() {
+            const grid = document.getElementById('galleryGrid');
+            const items = Array.from(grid.children);
+            
+            // Shuffle array
+            for (let i = items.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [items[i], items[j]] = [items[j], items[i]];
+            }
+            
+            // Clear grid and re-append shuffled items
+            grid.innerHTML = '';
+            items.forEach((item, index) => {
+                item.onclick = () => openLightbox(index);
+                grid.appendChild(item);
+            });
+        }
+        
+        function clearGallery() {
+            document.getElementById('galleryGrid').innerHTML = '';
+            photoCount = 0;
+            totalPhotos = 0;
+        }
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            const lightbox = document.getElementById('lightbox');
+            if (lightbox && lightbox.style.display === 'flex') {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') navigatePhoto(-1);
+                if (e.key === 'ArrowRight') navigatePhoto(1);
+            }
+        });
+        
+        // Initialize with some photos
+        document.addEventListener('DOMContentLoaded', function() {
+            generatePhotos(9);
+        });
+    </script>
+</body>
+</html>`,
     inputs: [
       {
         name: "photoCount",
@@ -7020,199 +7304,463 @@ console.log('Photo gallery with lightbox functionality rendered');`,
     ],
   },
 
-  // 3. FIXED - Random Image Generator (for Regular category)
+  // 3. Random Image Generator Component
   {
     id: "random-image-generator",
     name: "Random Image Generator",
     description: "Generate placeholder images from multiple sources",
     category: "components",
     icon: Image,
-    code: `// Random Image Generator (Fixed)
-function generateRandomImage(width = 400, height = 300, category = 'nature') {
-  const services = {
-    picsum: \`https://picsum.photos/\${width}/\${height}?random=\${Date.now()}\`,
-    unsplash: \`https://source.unsplash.com/\${width}x\${height}/?\${category}&\${Date.now()}\`,
-    placeholder: \`https://via.placeholder.com/\${width}x\${height}/4A90E2/FFFFFF?text=\${width}x\${height}\`,
-    dummyimage: \`https://dummyimage.com/\${width}x\${height}/4A90E2/FFFFFF&text=\${width}x\${height}\`,
-    placeholdercom: \`https://placeholder.com/\${width}x\${height}\`,
-    loremflickr: \`https://loremflickr.com/\${width}/\${height}/\${category}?\${Date.now()}\`
-  };
-  
-  return services;
-}
-
-function generateImagePreview(urls, selectedService = 'picsum') {
-  const imageUrl = urls[selectedService] || urls.picsum;
-  
-  const previewHTML = \`
-    <div class="image-generator-preview">
-      <div class="preview-container">
-        <img 
-          src="\${imageUrl}" 
-          alt="Generated Image" 
-          class="preview-image"
-          onload="this.style.opacity=1"
-          onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OTk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkZhaWxlZCB0byBMb2FkPC90ZXh0Pjwvc3ZnPic"
-        >
-        <div class="image-info">
-          <p><strong>Service:</strong> \${selectedService}</p>
-          <p><strong>URL:</strong> <a href="\${imageUrl}" target="_blank">\${imageUrl}</a></p>
-        </div>
-      </div>
-      <div class="url-list">
-        <h3>Available Image Sources:</h3>
-        \${Object.entries(urls).map(([service, url]) => \`
-          <div class="url-item">
-            <strong>\${service}:</strong>
-            <input type="text" value="\${url}" readonly onclick="this.select()">
-            <button onclick="copyToClipboard('\${url}')">Copy</button>
-          </div>
-        \`).join('')}
-      </div>
-    </div>
-    
+    isFree: true,
+    price: 0,
+    code: `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Image Generator</title>
     <style>
-      .image-generator-preview {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 20px;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      }
-      
-      .preview-container {
-        text-align: center;
-        margin-bottom: 30px;
-        padding: 20px;
-        border: 2px dashed #ddd;
-        border-radius: 12px;
-        background: #fafafa;
-      }
-      
-      .preview-image {
-        max-width: 100%;
-        height: auto;
-        border-radius: 8px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-      
-      .image-info {
-        margin-top: 15px;
-        text-align: left;
-        background: white;
-        padding: 15px;
-        border-radius: 8px;
-        border: 1px solid #e0e0e0;
-      }
-      
-      .image-info p {
-        margin: 8px 0;
-        word-break: break-all;
-      }
-      
-      .image-info a {
-        color: #4A90E2;
-        text-decoration: none;
-      }
-      
-      .image-info a:hover {
-        text-decoration: underline;
-      }
-      
-      .url-list {
-        background: white;
-        padding: 20px;
-        border-radius: 12px;
-        border: 1px solid #e0e0e0;
-      }
-      
-      .url-list h3 {
-        margin-top: 0;
-        color: #333;
-      }
-      
-      .url-item {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 15px;
-        padding: 10px;
-        background: #f8f9fa;
-        border-radius: 6px;
-      }
-      
-      .url-item strong {
-        min-width: 100px;
-        color: #555;
-        text-transform: capitalize;
-      }
-      
-      .url-item input {
-        flex: 1;
-        padding: 8px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        background: white;
-        font-family: monospace;
-        font-size: 12px;
-      }
-      
-      .url-item button {
-        padding: 8px 16px;
-        background: #4A90E2;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: background 0.2s ease;
-      }
-      
-      .url-item button:hover {
-        background: #357ABD;
-      }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .generator-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            padding: 30px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .controls {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .controls h2 {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 1.5rem;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group label {
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+        
+        .form-group input,
+        .form-group select {
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .generate-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .generate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        .preview-section {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .preview-section h2 {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 1.5rem;
+        }
+        
+        .image-preview {
+            text-align: center;
+            margin-bottom: 25px;
+            padding: 20px;
+            border: 2px dashed #ddd;
+            border-radius: 12px;
+            background: #fafafa;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .preview-image {
+            max-width: 100%;
+            max-height: 400px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .preview-image.loaded {
+            opacity: 1;
+        }
+        
+        .placeholder-text {
+            color: #999;
+            font-size: 18px;
+        }
+        
+        .image-info {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .image-info p {
+            margin: 8px 0;
+            word-break: break-all;
+        }
+        
+        .image-info strong {
+            color: #333;
+        }
+        
+        .image-info a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        .image-info a:hover {
+            text-decoration: underline;
+        }
+        
+        .services-section {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .services-section h2 {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 1.5rem;
+        }
+        
+        .service-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            transition: background 0.2s ease;
+        }
+        
+        .service-item:hover {
+            background: #e9ecef;
+        }
+        
+        .service-name {
+            min-width: 120px;
+            font-weight: 600;
+            color: #555;
+            text-transform: capitalize;
+        }
+        
+        .service-url {
+            flex: 1;
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: white;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .copy-btn {
+            padding: 8px 16px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+        
+        .copy-btn:hover {
+            background: #5a67d8;
+        }
+        
+        .copy-btn.copied {
+            background: #28a745;
+        }
+        
+        .service-preview {
+            width: 40px;
+            height: 40px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .service-preview:hover {
+            transform: scale(1.1);
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .service-item {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+            }
+            
+            .service-name {
+                min-width: auto;
+                text-align: center;
+            }
+        }
     </style>
-  \`;
-  
-  return previewHTML;
-}
+</head>
+<body>
+    <div class="generator-container">
+        <h1>Random Image Generator</h1>
+        
+        <div class="controls">
+            <h2>Image Settings</h2>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="width">Width (px)</label>
+                    <input type="number" id="width" value="400" min="50" max="2000">
+                </div>
+                <div class="form-group">
+                    <label for="height">Height (px)</label>
+                    <input type="number" id="height" value="300" min="50" max="2000">
+                </div>
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select id="category">
+                        <option value="nature">Nature</option>
+                        <option value="technology">Technology</option>
+                        <option value="city">City</option>
+                        <option value="food">Food</option>
+                        <option value="people">People</option>
+                        <option value="abstract">Abstract</option>
+                        <option value="animals">Animals</option>
+                        <option value="business">Business</option>
+                        <option value="architecture">Architecture</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="service">Service</label>
+                    <select id="service">
+                        <option value="picsum">Picsum Photos</option>
+                        <option value="unsplash">Unsplash</option>
+                        <option value="placeholder">Placeholder.com</option>
+                        <option value="dummyimage">DummyImage</option>
+                        <option value="loremflickr">LoremFlickr</option>
+                    </select>
+                </div>
+            </div>
+            <button class="generate-btn" onclick="generateImage()">Generate New Image</button>
+        </div>
+        
+        <div class="preview-section">
+            <h2>Image Preview</h2>
+            <div class="image-preview" id="imagePreview">
+                <div class="placeholder-text">Click "Generate New Image" to start</div>
+            </div>
+            <div class="image-info" id="imageInfo" style="display: none;">
+                <p><strong>Service:</strong> <span id="currentService">-</span></p>
+                <p><strong>Dimensions:</strong> <span id="currentDimensions">-</span></p>
+                <p><strong>Category:</strong> <span id="currentCategory">-</span></p>
+                <p><strong>URL:</strong> <a href="#" id="currentUrl" target="_blank">-</a></p>
+            </div>
+        </div>
+        
+        <div class="services-section">
+            <h2>All Available Services</h2>
+            <div id="servicesList">
+                <!-- Services will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
 
-function copyToClipboard(text) {
-  navigator.clipboard.writeText(text).then(() => {
-    // Simple feedback - you could enhance this
-    const button = event.target;
-    const originalText = button.textContent;
-    button.textContent = 'Copied!';
-    button.style.background = '#28a745';
-    setTimeout(() => {
-      button.textContent = originalText;
-      button.style.background = '#4A90E2';
-    }, 2000);
-  }).catch(err => {
-    console.error('Failed to copy:', err);
-    // Fallback for older browsers
-    const textArea = document.createElement('textarea');
-    textArea.value = text;
-    document.body.appendChild(textArea);
-    textArea.select();
-    document.execCommand('copy');
-    document.body.removeChild(textArea);
-  });
-}
-
-// Example usage
-const width = 400;
-const height = 300;
-const category = 'technology';
-
-const imageUrls = generateRandomImage(width, height, category);
-const previewHTML = generateImagePreview(imageUrls, 'picsum');
-
-document.body.innerHTML = previewHTML;
-
-console.log('Random image generator with multiple sources:');
-console.log('Available services:', Object.keys(imageUrls));
-console.log('All URLs generated successfully!');`,
+    <script>
+        let currentImageData = null;
+        
+        function generateImageUrls(width, height, category) {
+            const timestamp = Date.now();
+            return {
+                picsum: \`https://picsum.photos/\${width}/\${height}?random=\${timestamp}\`,
+                unsplash: \`https://source.unsplash.com/\${width}x\${height}/?\${category}&\${timestamp}\`,
+                placeholder: \`https://via.placeholder.com/\${width}x\${height}/667eea/FFFFFF?text=\${width}x\${height}\`,
+                dummyimage: \`https://dummyimage.com/\${width}x\${height}/667eea/ffffff&text=\${width}x\${height}\`,
+                loremflickr: \`https://loremflickr.com/\${width}/\${height}/\${category}?\${timestamp}\`
+            };
+        }
+        
+        function generateImage() {
+            const width = document.getElementById('width').value;
+            const height = document.getElementById('height').value;
+            const category = document.getElementById('category').value;
+            const service = document.getElementById('service').value;
+            
+            const urls = generateImageUrls(width, height, category);
+            const imageUrl = urls[service];
+            
+            currentImageData = {
+                width,
+                height,
+                category,
+                service,
+                url: imageUrl,
+                urls
+            };
+            
+            // Update preview
+            const preview = document.getElementById('imagePreview');
+            preview.innerHTML = \`
+                <img class="preview-image" src="\${imageUrl}" alt="Generated Image" 
+                     onload="this.classList.add('loaded')"
+                     onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OTk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkZhaWxlZCB0byBMb2FkPC90ZXh0Pjwvc3ZnPic">
+            \`;
+            
+            // Update info
+            document.getElementById('currentService').textContent = service;
+            document.getElementById('currentDimensions').textContent = \`\${width} x \${height}px\`;
+            document.getElementById('currentCategory').textContent = category;
+            document.getElementById('currentUrl').textContent = imageUrl;
+            document.getElementById('currentUrl').href = imageUrl;
+            document.getElementById('imageInfo').style.display = 'block';
+            
+            // Update services list
+            updateServicesList();
+        }
+        
+        function updateServicesList() {
+            if (!currentImageData) return;
+            
+            const servicesList = document.getElementById('servicesList');
+            const { urls, width, height } = currentImageData;
+            
+            servicesList.innerHTML = Object.entries(urls).map(([service, url]) => \`
+                <div class="service-item">
+                    <div class="service-name">\${service}</div>
+                    <input type="text" class="service-url" value="\${url}" readonly onclick="this.select()">
+                    <button class="copy-btn" onclick="copyToClipboard('\${url}', this)">Copy</button>
+                    <img class="service-preview" src="\${url}" alt="\${service}" 
+                         onclick="loadImageFromService('\${service}')"
+                         onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2YwZjBmMCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTAiIGZpbGw9IiM5OTk5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj4/PC90ZXh0Pjwvc3ZnPic">
+                </div>
+            \`).join('');
+        }
+        
+        function loadImageFromService(service) {
+            if (!currentImageData) return;
+            
+            document.getElementById('service').value = service;
+            generateImage();
+        }
+        
+        function copyToClipboard(text, button) {
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = button.textContent;
+                button.textContent = 'Copied!';
+                button.classList.add('copied');
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                
+                button.textContent = 'Copied!';
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                }, 2000);
+            });
+        }
+        
+        // Generate initial image on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            generateImage();
+        });
+        
+        // Auto-generate on input change
+        document.getElementById('width').addEventListener('change', generateImage);
+        document.getElementById('height').addEventListener('change', generateImage);
+        document.getElementById('category').addEventListener('change', generateImage);
+        document.getElementById('service').addEventListener('change', generateImage);
+    </script>
+</body>
+</html>`,
     inputs: [
       {
         name: "width",
@@ -7249,6 +7797,8 @@ console.log('All URLs generated successfully!');`,
     description: "Copy any text to clipboard with a single click",
     category: "regular",
     icon: Copy, // make sure you import Copy from your icon library
+    isFree: true,
+    price: 0,
     code: `// Copy to Clipboard Function
 function copyToClipboard(text) {
   if (navigator.clipboard && window.isSecureContext) {
@@ -7293,6 +7843,8 @@ copyToClipboard('Hello World!');`,
     description: "Detect the operating system of the user's device",
     category: "system",
     icon: Terminal, // import an OS/computer-related icon
+    isFree: true,
+    price: 0,
     code: `// Detect Operating System
 function getOS() {
   const userAgent = window.navigator.userAgent;
@@ -7328,6 +7880,8 @@ console.log('Operating System:', os);`,
     description: "Detect if the user is online or offline",
     category: "system",
     icon: Wifi,
+    isFree: true,
+    price: 0,
     code: `// Internet Status
 window.addEventListener("online", () => console.log("Back online ✅"));
 window.addEventListener("offline", () => console.log("You are offline ❌"));
@@ -7341,6 +7895,8 @@ console.log("Currently online?", navigator.onLine);`,
     description: "Generate a random UUID (v4)",
     category: "regular",
     icon: Key,
+    isFree: true,
+    price: 0,
     code: `// UUID v4 Generator
 function generateUUID() {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
@@ -7359,6 +7915,8 @@ console.log('Generated UUID:', generateUUID());`,
     description: "Fetch your public IP address using an API",
     category: "system",
     icon: Globe,
+    isFree: true,
+    price: 0,
     code: `// Get Public IP
 async function getPublicIP() {
   const res = await fetch("https://api.ipify.org?format=json");
@@ -7377,6 +7935,8 @@ getPublicIP();`,
     description: "Check if a given port is in use (Node.js)",
     category: "system",
     icon: Port,
+    isFree: true,
+    price: 0,
     code: `// Check if port is in use
 const net = require("net");
 
@@ -7410,6 +7970,8 @@ checkPort(3000).then(inUse => console.log("Port 3000 in use?", inUse));`,
     description: "Get the user's browser name and version",
     category: "system",
     icon: Browser,
+    isFree: true,
+    price: 0,
     code: `// Detect Browser
 function getBrowser() {
   const userAgent = navigator.userAgent;
@@ -7431,6 +7993,8 @@ console.log("Browser:", getBrowser());`,
     description: "Get the screen width and height of the device",
     category: "system",
     icon: Monitor,
+    isFree: true,
+    price: 0,
     code: `// Get Screen Size
 function getScreenSize() {
   return {
@@ -7447,6 +8011,8 @@ console.log("Screen Size:", getScreenSize());`,
     name: "Random Number Generator",
     description: "Generate a random number with customizable length",
     category: "regular",
+    isFree: true,
+    price: 0,
     icon: Hash, // use any number-related icon
     code: `// Random Number Generator
 function generateRandomNumber(length = 4) {
@@ -7473,6 +8039,8 @@ console.log("Random (6 digits):", generateRandomNumber(6));`,
     description: "Reverse any given string",
     category: "regular",
     icon: Undo,
+    isFree: true,
+    price: 0,
     code: `// Reverse String
 function reverseString(str) {
   return str.split("").reverse().join("");
@@ -7495,6 +8063,8 @@ console.log("Reversed:", reverseString("Hello"));`,
     description: "Capitalize the first letter of a string",
     category: "regular",
     icon: Type,
+    isFree: true,
+    price: 0,
     code: `// Capitalize First Letter
 function capitalizeFirstLetter(str) {
   if (!str) return "";
@@ -7518,6 +8088,8 @@ console.log("Capitalized:", capitalizeFirstLetter("hello world"));`,
     description: "Get the current date and time in readable format",
     category: "regular",
     icon: CalenderClock,
+    isFree: true,
+    price: 0,
     code: `// Current Date & Time
 function getCurrentDateTime() {
   const now = new Date();
@@ -7535,6 +8107,8 @@ console.log("Now:", getCurrentDateTime());`,
     description: "Randomly shuffle elements of an array",
     category: "regular",
     icon: Dice,
+    isFree: true,
+    price: 0,
     code: `// Shuffle Array
 function shuffleArray(arr) {
   return arr
@@ -7561,6 +8135,8 @@ console.log("Shuffled:", shuffleArray([1, 2, 3, 4, 5]));`,
     description: "Count the number of words in a string",
     category: "regular",
     icon: FileText,
+    isFree: true,
+    price: 0,
     code: `// Word Counter
 function countWords(str) {
   if (!str.trim()) return 0;
@@ -7584,6 +8160,8 @@ console.log("Word count:", countWords("Hello world, this is JS!"));`,
     description: "Check if a string is a palindrome",
     category: "regular",
     icon: Loop,
+    isFree: true,
+    price: 0,
     code: `// Palindrome Checker
 function isPalindrome(str) {
   const cleaned = str.toLowerCase().replace(/[^a-z0-9]/g, "");
@@ -7608,6 +8186,8 @@ console.log("Is Palindrome?", isPalindrome("Racecar"));`,
     description: "Display a real-time updating digital clock",
     category: "regular",
     icon: Clock,
+    isFree: true,
+    price: 0,
     code: `// Digital Clock
 function startClock() {
   function updateClock() {
@@ -7633,6 +8213,8 @@ const clock = startClock();
     description: "Get a random emoji each time",
     category: "fun",
     icon: Emoji,
+    isFree: true,
+    price: 0,
     code: `// Random Emoji Picker
 function getRandomEmoji() {
   const emojis = ["😀", "😂", "😍", "🤔", "😎", "🥳", "🔥", "🌈", "⚡", "🎉"];
@@ -7650,6 +8232,8 @@ console.log("Emoji:", getRandomEmoji());`,
     description: "Simulate flipping a coin (Heads or Tails)",
     category: "fun",
     icon: Coin,
+    isFree: true,
+    price: 0,
     code: `// Coin Flip
 function flipCoin() {
   const result = Math.random() < 0.5 ? "Heads" : "Tails";
@@ -7668,6 +8252,8 @@ flipCoin();`,
     description: "Roll a dice with customizable number of sides",
     category: "fun",
     icon: Dice,
+    isFree: true,
+    price: 0,
     code: `// Dice Roller
 function rollDice(sides = 6) {
   const result = Math.floor(Math.random() * sides) + 1;
@@ -7691,32 +8277,446 @@ rollDice(20);    // 20-sided dice`,
   {
     id: "confetti-generator",
     name: "Confetti Generator",
-    description: "Simple confetti effect on the page",
-    category: "fun",
+    description: "Interactive confetti effect with customizable options",
+    category: "forms",
     icon: Confetti,
-    code: `// Confetti Generator
-function launchConfetti() {
-  const colors = ["#ff0a54","#ff477e","#ff7096","#ff85a1","#fbb1b9","#f9bec7","#f7cad0"];
-  for (let i = 0; i < 100; i++) {
-    const confetti = document.createElement("div");
-    confetti.style.position = "fixed";
-    confetti.style.width = "8px";
-    confetti.style.height = "8px";
-    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-    confetti.style.left = Math.random() * window.innerWidth + "px";
-    confetti.style.top = Math.random() * window.innerHeight + "px";
-    confetti.style.opacity = Math.random();
-    confetti.style.borderRadius = "50%";
-    confetti.style.pointerEvents = "none";
-    document.body.appendChild(confetti);
-    setTimeout(() => confetti.remove(), 3000);
-  }
-}
+    isFree: true,
+    price: 0,
+    code: `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confetti Generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow: hidden;
+        }
+        
+        .confetti-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+            backdrop-filter: blur(10px);
+        }
+        
+        .confetti-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+        
+        .confetti-subtitle {
+            color: #6b7280;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .control-group {
+            text-align: left;
+        }
+        
+        .control-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #374151;
+        }
+        
+        .control-group input,
+        .control-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+        
+        .control-group input:focus,
+        .control-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .launch-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0 0.5rem;
+            min-width: 150px;
+        }
+        
+        .launch-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        .launch-btn:active {
+            transform: translateY(0);
+        }
+        
+        .preset-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        
+        .preset-btn {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            border: 2px solid #667eea;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .preset-btn:hover {
+            background: #667eea;
+            color: white;
+        }
+        
+        .confetti-piece {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            pointer-events: none;
+            z-index: 1000;
+        }
+        
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100px) translateX(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(calc(100vh + 100px)) translateX(var(--drift, 0px)) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes confetti-shake {
+            0%, 100% { transform: translateX(0px) translateY(0px); }
+            25% { transform: translateX(-2px) translateY(-1px); }
+            50% { transform: translateX(2px) translateY(1px); }
+            75% { transform: translateX(-1px) translateY(-2px); }
+        }
+        
+        .stats {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 10px;
+            color: #667eea;
+            font-weight: 600;
+        }
+        
+        @media (max-width: 768px) {
+            .confetti-container {
+                padding: 1.5rem;
+            }
+            
+            .controls {
+                grid-template-columns: 1fr;
+            }
+            
+            .preset-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="confetti-container">
+        <h1 class="confetti-title">🎉 Confetti Generator</h1>
+        <p class="confetti-subtitle">Create amazing confetti effects with customizable options!</p>
+        
+        <div class="preset-buttons">
+            <button class="preset-btn" onclick="setPreset('celebration')">🎉 Celebration</button>
+            <button class="preset-btn" onclick="setPreset('birthday')">🎂 Birthday</button>
+            <button class="preset-btn" onclick="setPreset('success')">✅ Success</button>
+            <button class="preset-btn" onclick="setPreset('rainbow')">🌈 Rainbow</button>
+            <button class="preset-btn" onclick="setPreset('gold')">⭐ Gold</button>
+        </div>
+        
+        <div class="controls">
+            <div class="control-group">
+                <label for="particleCount">Particle Count</label>
+                <input type="number" id="particleCount" value="100" min="10" max="500">
+            </div>
+            
+            <div class="control-group">
+                <label for="duration">Duration (seconds)</label>
+                <input type="number" id="duration" value="3" min="1" max="10" step="0.5">
+            </div>
+            
+            <div class="control-group">
+                <label for="spread">Spread Angle</label>
+                <input type="number" id="spread" value="360" min="30" max="360">
+            </div>
+            
+            <div class="control-group">
+                <label for="speed">Speed</label>
+                <select id="speed">
+                    <option value="slow">Slow</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="fast">Fast</option>
+                </select>
+            </div>
+        </div>
+        
+        <div style="margin-bottom: 1rem;">
+            <button class="launch-btn" onclick="launchConfetti()">🚀 Launch Confetti!</button>
+        </div>
+        
+        <div class="stats" id="stats">
+            Ready to launch! 🎯
+        </div>
+    </div>
 
-// Example usage
-launchConfetti();`,
-    inputs: [],
+    <script>
+        let activeConfetti = 0;
+        let totalLaunched = 0;
+        
+        const presets = {
+            celebration: {
+                colors: ["#ff0a54", "#ff477e", "#ff7096", "#ff85a1", "#fbb1b9", "#f9bec7", "#f7cad0"],
+                shapes: ["circle", "square"],
+                count: 150,
+                duration: 4,
+                spread: 360,
+                speed: "medium"
+            },
+            birthday: {
+                colors: ["#ff6b6b", "#4ecdc4", "#45b7d1", "#96ceb4", "#ffeaa7", "#dda0dd"],
+                shapes: ["circle", "square", "triangle"],
+                count: 200,
+                duration: 5,
+                spread: 180,
+                speed: "slow"
+            },
+            success: {
+                colors: ["#00b894", "#00cec9", "#6c5ce7", "#a29bfe"],
+                shapes: ["circle"],
+                count: 80,
+                duration: 2,
+                spread: 120,
+                speed: "fast"
+            },
+            rainbow: {
+                colors: ["#e74c3c", "#f39c12", "#f1c40f", "#27ae60", "#3498db", "#9b59b6", "#e91e63"],
+                shapes: ["circle", "square", "triangle"],
+                count: 250,
+                duration: 6,
+                spread: 360,
+                speed: "medium"
+            },
+            gold: {
+                colors: ["#f1c40f", "#f39c12", "#e67e22", "#d35400", "#ffd700", "#ffed4e"],
+                shapes: ["circle", "square"],
+                count: 120,
+                duration: 4,
+                spread: 180,
+                speed: "slow"
+            }
+        };
+        
+        function setPreset(presetName) {
+            const preset = presets[presetName];
+            if (!preset) return;
+            
+            document.getElementById('particleCount').value = preset.count;
+            document.getElementById('duration').value = preset.duration;
+            document.getElementById('spread').value = preset.spread;
+            document.getElementById('speed').value = preset.speed;
+            
+            updateStats();
+        }
+        
+        function createConfettiPiece(colors, shapes, speed, duration) {
+            const confetti = document.createElement("div");
+            confetti.className = "confetti-piece";
+            
+            // Random properties
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            const shape = shapes[Math.floor(Math.random() * shapes.length)];
+            const size = Math.random() * 8 + 4; // 4-12px
+            const startX = Math.random() * window.innerWidth;
+            const spread = parseInt(document.getElementById('spread').value);
+            const angle = (Math.random() - 0.5) * (spread * Math.PI / 180);
+            
+            // Style the confetti piece
+            confetti.style.backgroundColor = color;
+            confetti.style.width = size + "px";
+            confetti.style.height = size + "px";
+            confetti.style.left = startX + "px";
+            confetti.style.top = "-20px";
+            
+            // Shape styling
+            if (shape === "circle") {
+                confetti.style.borderRadius = "50%";
+            } else if (shape === "triangle") {
+                confetti.style.width = "0";
+                confetti.style.height = "0";
+                confetti.style.backgroundColor = "transparent";
+                confetti.style.borderLeft = (size/2) + "px solid transparent";
+                confetti.style.borderRight = (size/2) + "px solid transparent";
+                confetti.style.borderBottom = size + "px solid " + color;
+            }
+            
+            // Animation duration based on speed
+            const speedMultiplier = speed === "slow" ? 1.5 : speed === "fast" ? 0.7 : 1;
+            const animationDuration = (duration * speedMultiplier) + "s";
+            
+            confetti.style.animation = \`confetti-fall \${animationDuration} linear forwards, confetti-shake 0.5s ease-in-out infinite\`;
+            
+            // Add physics-like movement with CSS custom property
+            const drift = (Math.random() - 0.5) * 100;
+            confetti.style.setProperty('--drift', drift + 'px');
+            
+            document.body.appendChild(confetti);
+            activeConfetti++;
+            
+            // Remove after animation
+            setTimeout(() => {
+                if (confetti.parentNode) {
+                    confetti.remove();
+                    activeConfetti--;
+                    updateStats();
+                }
+            }, duration * speedMultiplier * 1000);
+        }
+        
+        function launchConfetti() {
+            const particleCount = parseInt(document.getElementById('particleCount').value);
+            const duration = parseFloat(document.getElementById('duration').value);
+            const speed = document.getElementById('speed').value;
+            
+            // Use current preset or default colors
+            const colors = ["#ff0a54", "#ff477e", "#ff7096", "#ff85a1", "#fbb1b9", "#f9bec7", "#f7cad0"];
+            const shapes = ["circle", "square"];
+            
+            // Launch confetti in batches for better performance
+            const batchSize = 20;
+            const batches = Math.ceil(particleCount / batchSize);
+            const delay = 100; // ms between batches
+            
+            for (let batch = 0; batch < batches; batch++) {
+                setTimeout(() => {
+                    const piecesInBatch = Math.min(batchSize, particleCount - (batch * batchSize));
+                    for (let i = 0; i < piecesInBatch; i++) {
+                        createConfettiPiece(colors, shapes, speed, duration);
+                    }
+                }, batch * delay);
+            }
+            
+            totalLaunched += particleCount;
+            updateStats();
+            
+            // Add screen shake effect
+            document.body.style.animation = "confetti-shake 0.5s ease-in-out";
+            setTimeout(() => {
+                document.body.style.animation = "";
+            }, 500);
+        }
+        
+        function updateStats() {
+            const stats = document.getElementById('stats');
+            const particleCount = document.getElementById('particleCount').value;
+            const duration = document.getElementById('duration').value;
+            
+            stats.innerHTML = \`
+                Ready: \${particleCount} particles for \${duration}s | 
+                Active: \${activeConfetti} | 
+                Total Launched: \${totalLaunched} 🎉
+            \`;
+        }
+        
+        // Update stats when inputs change
+        document.querySelectorAll('input, select').forEach(input => {
+            input.addEventListener('change', updateStats);
+        });
+        
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.code === 'Space') {
+                e.preventDefault();
+                launchConfetti();
+            }
+        });
+        
+        // Initialize
+        updateStats();
+        
+        // Auto-launch a small celebration on page load
+        setTimeout(() => {
+            setPreset('celebration');
+            document.getElementById('particleCount').value = 50;
+            launchConfetti();
+        }, 500);
+    </script>
+</body>
+</html>`,
+    inputs: [
+      {
+        name: "particleCount",
+        type: "number",
+        placeholder: "Number of particles",
+        defaultValue: 100,
+      },
+      {
+        name: "duration",
+        type: "number",
+        placeholder: "Duration in seconds",
+        defaultValue: 3,
+      },
+      {
+        name: "preset",
+        type: "select",
+        options: ["celebration", "birthday", "success", "rainbow", "gold"],
+        defaultValue: "celebration",
+      },
+    ],
   },
+  ...games,
 ];
 
 export const categories = {
@@ -7728,4 +8728,5 @@ export const categories = {
   fun: "Fun & Quirky",
   forms: "Forms",
   components: "UI Components",
+  games: "Games",
 };

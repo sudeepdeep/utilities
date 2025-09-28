@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Confetti Generator Test</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        overflow: hidden;
+      }
+
+      .confetti-container {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 2rem;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        max-width: 500px;
+        width: 100%;
+        backdrop-filter: blur(10px);
+      }
+
+      .confetti-title {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 700;
+      }
+
+      .confetti-subtitle {
+        color: #6b7280;
+        margin-bottom: 2rem;
+        font-size: 1.1rem;
+      }
+
+      .controls {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .control-group {
+        text-align: left;
+      }
+
+      .control-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: #374151;
+      }
+
+      .control-group input,
+      .control-group select {
+        width: 100%;
+        padding: 0.75rem;
+        border: 2px solid #e5e7eb;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: border-color 0.2s;
+      }
+
+      .control-group input:focus,
+      .control-group select:focus {
+        outline: none;
+        border-color: #667eea;
+      }
+
+      .launch-btn {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        padding: 1rem 2rem;
+        border-radius: 50px;
+        font-size: 1.2rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin: 0 0.5rem;
+        min-width: 150px;
+      }
+
+      .launch-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+      }
+
+      .launch-btn:active {
+        transform: translateY(0);
+      }
+
+      .preset-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+        margin-bottom: 2rem;
+      }
+
+      .preset-btn {
+        background: rgba(102, 126, 234, 0.1);
+        color: #667eea;
+        border: 2px solid #667eea;
+        padding: 0.5rem 1rem;
+        border-radius: 25px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .preset-btn:hover {
+        background: #667eea;
+        color: white;
+      }
+
+      .confetti-piece {
+        position: fixed;
+        width: 10px;
+        height: 10px;
+        pointer-events: none;
+        z-index: 1000;
+      }
+
+      @keyframes confetti-fall {
+        0% {
+          transform: translateY(-100px) translateX(0) rotate(0deg);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(calc(100vh + 100px))
+            translateX(var(--drift, 0px)) rotate(720deg);
+          opacity: 0;
+        }
+      }
+
+      @keyframes confetti-shake {
+        0%,
+        100% {
+          transform: translateX(0px) translateY(0px);
+        }
+        25% {
+          transform: translateX(-2px) translateY(-1px);
+        }
+        50% {
+          transform: translateX(2px) translateY(1px);
+        }
+        75% {
+          transform: translateX(-1px) translateY(-2px);
+        }
+      }
+
+      .stats {
+        margin-top: 2rem;
+        padding: 1rem;
+        background: rgba(102, 126, 234, 0.1);
+        border-radius: 10px;
+        color: #667eea;
+        font-weight: 600;
+      }
+
+      @media (max-width: 768px) {
+        .confetti-container {
+          padding: 1.5rem;
+        }
+
+        .controls {
+          grid-template-columns: 1fr;
+        }
+
+        .preset-buttons {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="confetti-container">
+      <h1 class="confetti-title">🎉 Confetti Generator</h1>
+      <p class="confetti-subtitle">
+        Create amazing confetti effects with customizable options!
+      </p>
+
+      <div class="preset-buttons">
+        <button class="preset-btn" onclick="setPreset('celebration')">
+          🎉 Celebration
+        </button>
+        <button class="preset-btn" onclick="setPreset('birthday')">
+          🎂 Birthday
+        </button>
+        <button class="preset-btn" onclick="setPreset('success')">
+          ✅ Success
+        </button>
+        <button class="preset-btn" onclick="setPreset('rainbow')">
+          🌈 Rainbow
+        </button>
+        <button class="preset-btn" onclick="setPreset('gold')">⭐ Gold</button>
+      </div>
+
+      <div class="controls">
+        <div class="control-group">
+          <label for="particleCount">Particle Count</label>
+          <input
+            type="number"
+            id="particleCount"
+            value="100"
+            min="10"
+            max="500"
+          />
+        </div>
+
+        <div class="control-group">
+          <label for="duration">Duration (seconds)</label>
+          <input
+            type="number"
+            id="duration"
+            value="3"
+            min="1"
+            max="10"
+            step="0.5"
+          />
+        </div>
+
+        <div class="control-group">
+          <label for="spread">Spread Angle</label>
+          <input type="number" id="spread" value="360" min="30" max="360" />
+        </div>
+
+        <div class="control-group">
+          <label for="speed">Speed</label>
+          <select id="speed">
+            <option value="slow">Slow</option>
+            <option value="medium" selected>Medium</option>
+            <option value="fast">Fast</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 1rem">
+        <button class="launch-btn" onclick="launchConfetti()">
+          🚀 Launch Confetti!
+        </button>
+      </div>
+
+      <div class="stats" id="stats">Ready to launch! 🎯</div>
+    </div>
+
+    <script>
+      let activeConfetti = 0;
+      let totalLaunched = 0;
+
+      const presets = {
+        celebration: {
+          colors: [
+            "#ff0a54",
+            "#ff477e",
+            "#ff7096",
+            "#ff85a1",
+            "#fbb1b9",
+            "#f9bec7",
+            "#f7cad0",
+          ],
+          shapes: ["circle", "square"],
+          count: 150,
+          duration: 4,
+          spread: 360,
+          speed: "medium",
+        },
+        birthday: {
+          colors: [
+            "#ff6b6b",
+            "#4ecdc4",
+            "#45b7d1",
+            "#96ceb4",
+            "#ffeaa7",
+            "#dda0dd",
+          ],
+          shapes: ["circle", "square", "triangle"],
+          count: 200,
+          duration: 5,
+          spread: 180,
+          speed: "slow",
+        },
+        success: {
+          colors: ["#00b894", "#00cec9", "#6c5ce7", "#a29bfe"],
+          shapes: ["circle"],
+          count: 80,
+          duration: 2,
+          spread: 120,
+          speed: "fast",
+        },
+        rainbow: {
+          colors: [
+            "#e74c3c",
+            "#f39c12",
+            "#f1c40f",
+            "#27ae60",
+            "#3498db",
+            "#9b59b6",
+            "#e91e63",
+          ],
+          shapes: ["circle", "square", "triangle"],
+          count: 250,
+          duration: 6,
+          spread: 360,
+          speed: "medium",
+        },
+        gold: {
+          colors: [
+            "#f1c40f",
+            "#f39c12",
+            "#e67e22",
+            "#d35400",
+            "#ffd700",
+            "#ffed4e",
+          ],
+          shapes: ["circle", "square"],
+          count: 120,
+          duration: 4,
+          spread: 180,
+          speed: "slow",
+        },
+      };
+
+      function setPreset(presetName) {
+        const preset = presets[presetName];
+        if (!preset) return;
+
+        document.getElementById("particleCount").value = preset.count;
+        document.getElementById("duration").value = preset.duration;
+        document.getElementById("spread").value = preset.spread;
+        document.getElementById("speed").value = preset.speed;
+
+        updateStats();
+      }
+
+      function createConfettiPiece(colors, shapes, speed, duration) {
+        const confetti = document.createElement("div");
+        confetti.className = "confetti-piece";
+
+        // Random properties
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        const shape = shapes[Math.floor(Math.random() * shapes.length)];
+        const size = Math.random() * 8 + 4; // 4-12px
+        const startX = Math.random() * window.innerWidth;
+        const spread = parseInt(document.getElementById("spread").value);
+        const angle = (Math.random() - 0.5) * ((spread * Math.PI) / 180);
+
+        // Style the confetti piece
+        confetti.style.backgroundColor = color;
+        confetti.style.width = size + "px";
+        confetti.style.height = size + "px";
+        confetti.style.left = startX + "px";
+        confetti.style.top = "-20px";
+
+        // Shape styling
+        if (shape === "circle") {
+          confetti.style.borderRadius = "50%";
+        } else if (shape === "triangle") {
+          confetti.style.width = "0";
+          confetti.style.height = "0";
+          confetti.style.backgroundColor = "transparent";
+          confetti.style.borderLeft = size / 2 + "px solid transparent";
+          confetti.style.borderRight = size / 2 + "px solid transparent";
+          confetti.style.borderBottom = size + "px solid " + color;
+        }
+
+        // Animation duration based on speed
+        const speedMultiplier =
+          speed === "slow" ? 1.5 : speed === "fast" ? 0.7 : 1;
+        const animationDuration = duration * speedMultiplier + "s";
+
+        confetti.style.animation = `confetti-fall ${animationDuration} linear forwards, confetti-shake 0.5s ease-in-out infinite`;
+
+        // Add physics-like movement with CSS custom property
+        const drift = (Math.random() - 0.5) * 100;
+        confetti.style.setProperty("--drift", drift + "px");
+
+        document.body.appendChild(confetti);
+        activeConfetti++;
+
+        // Remove after animation
+        setTimeout(() => {
+          if (confetti.parentNode) {
+            confetti.remove();
+            activeConfetti--;
+            updateStats();
+          }
+        }, duration * speedMultiplier * 1000);
+      }
+
+      function launchConfetti() {
+        const particleCount = parseInt(
+          document.getElementById("particleCount").value
+        );
+        const duration = parseFloat(document.getElementById("duration").value);
+        const speed = document.getElementById("speed").value;
+
+        // Use current preset or default colors
+        const colors = [
+          "#ff0a54",
+          "#ff477e",
+          "#ff7096",
+          "#ff85a1",
+          "#fbb1b9",
+          "#f9bec7",
+          "#f7cad0",
+        ];
+        const shapes = ["circle", "square"];
+
+        // Launch confetti in batches for better performance
+        const batchSize = 20;
+        const batches = Math.ceil(particleCount / batchSize);
+        const delay = 100; // ms between batches
+
+        for (let batch = 0; batch < batches; batch++) {
+          setTimeout(() => {
+            const piecesInBatch = Math.min(
+              batchSize,
+              particleCount - batch * batchSize
+            );
+            for (let i = 0; i < piecesInBatch; i++) {
+              createConfettiPiece(colors, shapes, speed, duration);
+            }
+          }, batch * delay);
+        }
+
+        totalLaunched += particleCount;
+        updateStats();
+
+        // Add screen shake effect
+        document.body.style.animation = "confetti-shake 0.5s ease-in-out";
+        setTimeout(() => {
+          document.body.style.animation = "";
+        }, 500);
+      }
+
+      function updateStats() {
+        const stats = document.getElementById("stats");
+        const particleCount = document.getElementById("particleCount").value;
+        const duration = document.getElementById("duration").value;
+
+        stats.innerHTML = `
+                Ready: ${particleCount} particles for ${duration}s | 
+                Active: ${activeConfetti} | 
+                Total Launched: ${totalLaunched} 🎉
+            `;
+      }
+
+      // Update stats when inputs change
+      document.querySelectorAll("input, select").forEach((input) => {
+        input.addEventListener("change", updateStats);
+      });
+
+      // Keyboard shortcuts
+      document.addEventListener("keydown", (e) => {
+        if (e.code === "Space") {
+          e.preventDefault();
+          launchConfetti();
+        }
+      });
+
+      // Initialize
+      updateStats();
+
+      // Auto-launch a small celebration on page load
+      setTimeout(() => {
+        setPreset("celebration");
+        document.getElementById("particleCount").value = 50;
+        launchConfetti();
+      }, 500);
+    </script>
+  </body>
+</html>

@@ -474,6 +474,157 @@ export const Sparkles = () => {
   );
 };
 
+export const GameConsole = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      className="lucide lucide-gamepad2-icon lucide-gamepad-2"
+    >
+      <line x1="6" x2="10" y1="11" y2="11" />
+      <line x1="8" x2="8" y1="9" y2="13" />
+      <line x1="15" x2="15.01" y1="12" y2="12" />
+      <line x1="18" x2="18.01" y1="10" y2="10" />
+      <path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z" />
+    </svg>
+  );
+};
+
+export const CrownIcon = () => {
+  return (
+    <>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        className="lucide lucide-crown-icon lucide-crown"
+      >
+        <path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z" />
+        <path d="M5 21h14" />
+      </svg>
+    </>
+  );
+};
+
+export const MoonStar = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      className="lucide lucide-moon-star-icon lucide-moon-star"
+    >
+      <path d="M18 5h4" />
+      <path d="M20 3v4" />
+      <path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" />
+    </svg>
+  );
+};
+
+export const PersonStanding = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      className="lucide lucide-person-standing-icon lucide-person-standing"
+    >
+      <circle cx="12" cy="5" r="1" />
+      <path d="m9 20 3-6 3 6" />
+      <path d="m6 8 6 2 6-2" />
+      <path d="M12 10v4" />
+    </svg>
+  );
+};
+
+export const WormIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      className="lucide lucide-worm-icon lucide-worm"
+    >
+      <path d="m19 12-1.5 3" />
+      <path d="M19.63 18.81 22 20" />
+      <path d="M6.47 8.23a1.68 1.68 0 0 1 2.44 1.93l-.64 2.08a6.76 6.76 0 0 0 10.16 7.67l.42-.27a1 1 0 1 0-2.73-4.21l-.42.27a1.76 1.76 0 0 1-2.63-1.99l.64-2.08A6.66 6.66 0 0 0 3.94 3.9l-.7.4a1 1 0 1 0 2.55 4.34z" />
+    </svg>
+  );
+};
+
+export const DinoIcon = () => {
+  return (
+    <svg
+      viewBox="13 0 285 306"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g
+        id="Group-3"
+        stroke="none"
+        stroke-width="1"
+        fill="none"
+        fill-rule="evenodd"
+        transform="translate(13.000000, 0.000000)"
+      >
+        <polygon
+          id="Path"
+          fill="#666666"
+          points="256.351585 91.6642857 213.916427 91.6642857 213.916427 80.0385714 284.492795 80.0385714 284.492795 14.3085714 270.198847 14.3085714 270.198847 0 155.400576 0 155.400576 14.3085714 141.553314 14.3085714 141.553314 105.972857 127.259366 105.972857 127.259366 119.834286 106.26513 119.834286 106.26513 134.142857 85.2708934 134.142857 85.2708934 148.451429 70.9769452 148.451429 70.9769452 162.312857 45.0691643 162.312857 45.0691643 148.004286 31.221902 148.004286 31.221902 134.142857 16.9279539 134.142857 16.9279539 105.972857 0.847262248 105.972857 0.847262248 192.718571 14.6945245 192.718571 14.6945245 207.027143 28.9884726 207.027143 28.9884726 220.888571 42.8357349 220.888571 42.8357349 235.197143 57.129683 235.197143 57.129683 249.058571 70.9769452 249.058571 70.9769452 305.398571 101.351585 305.398571 101.351585 289.301429 87.5043228 289.301429 87.5043228 277.228571 101.351585 277.228571 101.351585 263.367143 115.645533 263.367143 115.645533 249.058571 127.259366 249.058571 127.259366 263.367143 141.553314 263.367143 141.553314 305.398571 171.927954 305.398571 171.927954 289.301429 157.634006 289.301429 157.634006 235.197143 171.927954 235.197143 171.927954 220.888571 185.775216 220.888571 185.775216 199.872857 200.069164 199.872857 200.069164 150.687143 211.682997 150.687143 211.682997 164.548571 228.210375 164.548571 228.210375 134.142857 200.069164 134.142857 200.069164 108.208571 256.351585 108.208571"
+        ></polygon>
+        <rect
+          id="Rectangle"
+          fill="#FFFFFF"
+          x="169.247839"
+          y="20.5685714"
+          width="16.9740634"
+          height="16.9914286"
+        ></rect>
+      </g>
+    </svg>
+  );
+};
+
+export const Target = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      className="lucide lucide-target-icon lucide-target"
+    >
+      <circle cx="12" cy="12" r="10" />
+      <circle cx="12" cy="12" r="6" />
+      <circle cx="12" cy="12" r="2" />
+    </svg>
+  );
+};
+
 export const Zap = () => {
   return (
     <svg
@@ -505,6 +656,25 @@ export const Home = () => {
     >
       <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
       <path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+    </svg>
+  );
+};
+
+export const Logout = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      className="lucide lucide-log-out-icon lucide-log-out"
+    >
+      <path d="m16 17 5-5-5-5" />
+      <path d="M21 12H9" />
+      <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
     </svg>
   );
 };
@@ -1052,6 +1222,93 @@ export const Network = () => {
       <rect x="9" y="2" width="6" height="6" rx="1" />
       <path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3" />
       <path d="M12 12V8" />
+    </svg>
+  );
+};
+
+export const SpiderMan = () => {
+  return (
+    <svg
+      viewBox="0 0 100 100"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="currentColor"
+    >
+      {/* Spider-Man head/mask */}
+      <ellipse cx="50" cy="35" rx="18" ry="20" fill="#DC143C" />
+
+      {/* Web pattern on head */}
+      <path
+        d="M32 35 Q50 25 68 35"
+        stroke="#8B0000"
+        strokeWidth="1"
+        fill="none"
+      />
+      <path
+        d="M35 25 Q50 30 65 25"
+        stroke="#8B0000"
+        strokeWidth="1"
+        fill="none"
+      />
+      <path
+        d="M38 45 Q50 40 62 45"
+        stroke="#8B0000"
+        strokeWidth="1"
+        fill="none"
+      />
+      <line x1="50" y1="15" x2="50" y2="55" stroke="#8B0000" strokeWidth="1" />
+      <line x1="42" y1="20" x2="58" y2="50" stroke="#8B0000" strokeWidth="1" />
+      <line x1="58" y1="20" x2="42" y2="50" stroke="#8B0000" strokeWidth="1" />
+
+      {/* Eyes */}
+      <ellipse cx="44" cy="32" rx="4" ry="6" fill="#FFF" />
+      <ellipse cx="56" cy="32" rx="4" ry="6" fill="#FFF" />
+      <ellipse cx="44" cy="32" rx="2" ry="4" fill="#000" />
+      <ellipse cx="56" cy="32" rx="2" ry="4" fill="#000" />
+
+      {/* Body */}
+      <ellipse cx="50" cy="65" rx="12" ry="25" fill="#DC143C" />
+
+      {/* Spider symbol on chest */}
+      <path d="M50 55 L45 60 L50 70 L55 60 Z" fill="#000" />
+      <ellipse cx="50" cy="58" rx="3" ry="2" fill="#000" />
+
+      {/* Arms */}
+      <ellipse
+        cx="35"
+        cy="60"
+        rx="4"
+        ry="12"
+        fill="#DC143C"
+        transform="rotate(-30 35 60)"
+      />
+      <ellipse
+        cx="65"
+        cy="60"
+        rx="4"
+        ry="12"
+        fill="#DC143C"
+        transform="rotate(30 65 60)"
+      />
+
+      {/* Legs */}
+      <ellipse cx="45" cy="85" rx="4" ry="10" fill="#DC143C" />
+      <ellipse cx="55" cy="85" rx="4" ry="10" fill="#DC143C" />
+
+      {/* Web lines from hands */}
+      <path
+        d="M30 55 Q20 45 15 35"
+        stroke="#C0C0C0"
+        strokeWidth="1"
+        fill="none"
+        opacity="0.7"
+      />
+      <path
+        d="M70 55 Q80 45 85 35"
+        stroke="#C0C0C0"
+        strokeWidth="1"
+        fill="none"
+        opacity="0.7"
+      />
     </svg>
   );
 };

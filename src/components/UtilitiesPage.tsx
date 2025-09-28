@@ -1,11 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import Sidebar from "./Sidebar.js";
-import ToolViewer from "./ToolViewer.js";
 import { tools } from "../data/tools.js";
 import type { Tool } from "../types/index.js";
+import AuthModal from "./AuthModal.js";
 import { SEO } from "./SEO.js";
+import Sidebar from "./Sidebar.js";
+import ToolViewer from "./ToolViewer.js";
+import axios from "axios";
+import Cookies from "js-cookie";
 
 const UtilitiesPage: React.FC = () => {
   const { toolId, categoryId } = useParams();
@@ -17,6 +20,9 @@ const UtilitiesPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [loading, setIsLoading] = useState(false);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const [userData, setUserData] = useState("");
 
   const filteredTools = useMemo(() => {
     if (!searchTerm) return tools;
@@ -29,26 +35,45 @@ const UtilitiesPage: React.FC = () => {
   }, [searchTerm]);
 
   function handleToolChange(tool: any) {
-    console.log(tool);
     setActiveTab("code");
     setSelectedTool(tool);
     setMobileMenuOpen(false); // Close mobile menu when tool is selected
-    navigate(`/utilities/category/${tool.category}/tools/${tool.id}`);
+    navigate(
+      `/utilities/category/${tool.category}/tools/${tool.id}#${tool.id}`
+    );
   }
 
   useEffect(() => {
-    const toolsIds = tools.map((item) => ({
-      id: item.id,
-      category: item.category,
-    }));
-    console.log(toolsIds);
+    const userId: any = Cookies.get("userId");
+    const token: any = Cookies.get("accessToken");
+    if (token) {
+      setIsLoading(true);
+      axios
+        .get(`https://omni-backend-lake.vercel.app/user/${userId}/my-profile`, {
+          headers: { Authorization: "Bearer " + token },
+        })
+        .then((res) => {
+          if (res.status == 200 && res.data && res.data.user) {
+            setUserData(res.data.user);
+          }
+          setIsLoading(false);
+        })
+        .catch((err) => {
+          setIsLoading(false);
+          console.log(err);
+        });
+    }
+  }, []);
+  useEffect(() => {
     if (toolId && categoryId) {
       const tool: any = tools.find((item) => item.id == toolId);
       setSelectedTool(tool);
     } else {
       const tool: any = tools[0];
       setSelectedTool(tools[0]);
-      navigate(`/utilities/category/${tool.category}/tools/${tool.id}`);
+      navigate(
+        `/utilities/category/${tool.category}/tools/${tool.id}#${tool.id}`
+      );
     }
   }, [toolId, categoryId]);
 
@@ -146,6 +171,10 @@ const UtilitiesPage: React.FC = () => {
             onSearchChange={setSearchTerm}
             collapsed={sidebarCollapsed}
             onToggleCollapse={() => setSidebarCollapsed(!sidebarCollapsed)}
+            onModalOpen={() => setIsAuthModalOpen(true)}
+            userData={userData}
+            setUserData={setUserData}
+            loading={loading}
           />
         </div>
 
@@ -185,8 +214,16 @@ const UtilitiesPage: React.FC = () => {
             onSelectTool={handleToolChange}
             setActiveTab={setActiveTab}
             activeTab={activeTab}
+            userData={userData}
+            onModalOpen={() => setIsAuthModalOpen(true)}
           />
         </main>
+
+        {/* Auth Modal */}
+        <AuthModal
+          isOpen={isAuthModalOpen}
+          onClose={() => setIsAuthModalOpen(false)}
+        />
       </div>
     </>
   );

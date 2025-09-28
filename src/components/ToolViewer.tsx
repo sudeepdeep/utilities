@@ -1,24 +1,81 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import type { Tool } from "../types/index.tsx";
 import CodeBlock from "./CodeBlock.tsx";
 import IconWrapper from "../utils/IconWrapper.tsx";
+import PremiumCard from "./PremiumCard.tsx";
+import Loader from "./Loader.tsx";
 
 interface ToolViewerProps {
   tool: Tool | null;
   onSelectTool: (tool: Tool) => void;
   setActiveTab?: any;
   activeTab?: any;
+  userData?: any;
+  onModalOpen?: any;
 }
 
 const ToolViewer: React.FC<ToolViewerProps> = ({
   tool,
   setActiveTab,
   activeTab,
+  userData,
+  onModalOpen,
 }) => {
-  console.log(tool);
-  console.log("Tool icon:", tool?.icon);
-  console.log("Tool icon type:", typeof tool?.icon);
+  const navigate = useNavigate();
+  const [isFree, setIsFree] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (userData && tool && !tool.isFree) {
+      if (userData.purchasedItems && userData.purchasedItems.length > 0) {
+        const isUserPurchased = userData.purchasedItems.find(
+          (item: any) => item == tool.id
+        );
+        if (isUserPurchased) {
+          setIsFree(true);
+        } else {
+          setIsFree(false);
+        }
+        setIsLoading(false);
+      } else {
+        if (tool?.isFree) {
+          setIsFree(true);
+        } else {
+          setIsFree(false);
+        }
+        setIsLoading(false);
+      }
+    } else {
+      if (tool?.isFree) {
+        setIsFree(true);
+      } else {
+        setIsFree(false);
+      }
+      setIsLoading(false);
+    }
+  }, [tool, userData]);
+
+  function removeQueryFromUrl(url: any) {
+    // Remove everything after ? in both main URL and hash
+    return url.replace(/\?.*$/, "").replace(/(#.*?)\?.*$/, "$1");
+  }
+
+  // Handle payment for premium tools
+  const handlePayNow = () => {
+    if (!tool) return;
+    // Navigate to checkout page with tool ID
+    if (!userData) {
+      const url = window.location.href;
+      let cleanedUrl = removeQueryFromUrl(url);
+      cleanedUrl += `?redirectUrl=/checkout/${tool.id}`;
+      window.location.href = cleanedUrl;
+      onModalOpen();
+    } else {
+      navigate(`/checkout/${tool.id}`);
+    }
+  };
   // Function to encrypt code for Syntaxz URL
   function compressCode(code: any) {
     try {
@@ -158,6 +215,25 @@ const ToolViewer: React.FC<ToolViewerProps> = ({
     );
   }
 
+  if (isLoading)
+    return (
+      <div className="h-full flex items-center justify-center bg-slate-900">
+        <div className="text-center">
+          {/* <div className="w-16 h-16 mx-auto mb-4 text-slate-500">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1}
+                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+              />
+            </svg>
+          </div> */}
+          <Loader />
+        </div>
+      </div>
+    );
+
   return (
     <div className="h-full w-full flex flex-col bg-slate-900">
       {/* Header */}
@@ -222,12 +298,16 @@ const ToolViewer: React.FC<ToolViewerProps> = ({
                 />
               </svg>
               <span className="hidden sm:inline">
-                {tool.category === "forms" || tool.category === "components"
+                {tool.category === "forms" ||
+                tool.category === "components" ||
+                tool.category === "games"
                   ? "Run HTML"
                   : "Run on Syntaxz"}
               </span>
               <span className="sm:hidden">
-                {tool.category === "forms" || tool.category === "components"
+                {tool.category === "forms" ||
+                tool.category === "components" ||
+                tool.category === "games"
                   ? "Run"
                   : "Syntaxz"}
               </span>
@@ -239,7 +319,17 @@ const ToolViewer: React.FC<ToolViewerProps> = ({
       {/* Content */}
       <div className="flex-1 overflow-hidden">
         {activeTab === "code" ? (
-          <CodeBlock code={tool.code} language="javascript" />
+          !isFree ? (
+            // Show premium card for paid tools
+            <PremiumCard
+              title={tool.name}
+              description={tool.description}
+              price={tool.price || 0}
+              onPayNow={handlePayNow}
+            />
+          ) : (
+            <CodeBlock code={tool.code} language="javascript" />
+          )
         ) : (
           <div className="h-full flex items-center justify-center bg-slate-900 p-4 sm:p-8">
             <div className="text-center max-w-md w-full">
@@ -254,18 +344,24 @@ const ToolViewer: React.FC<ToolViewerProps> = ({
                 </svg>
               </div>
               <h3 className="text-lg sm:text-xl font-semibold text-slate-200 mb-3">
-                {tool.category === "forms" || tool.category === "components"
+                {tool.category === "forms" ||
+                tool.category === "components" ||
+                tool.category === "games"
                   ? "Run HTML"
                   : "Run on Syntaxz"}
               </h3>
               <p className="text-slate-400 mb-6 leading-relaxed text-sm sm:text-base">
-                {tool.category === "forms" || tool.category === "components"
+                {tool.category === "forms" ||
+                tool.category === "components" ||
+                tool.category === "games"
                   ? "Execute this HTML component in a new tab with full CSS and JavaScript functionality."
                   : "Execute this JavaScript code in a professional online compiler environment with full debugging capabilities."}
               </p>
               <button
                 onClick={
-                  tool.category === "forms" || tool.category === "components"
+                  tool.category === "forms" ||
+                  tool.category === "components" ||
+                  tool.category === "games"
                     ? runFormInNewTab
                     : runOnSyntaxz
                 }
@@ -285,13 +381,17 @@ const ToolViewer: React.FC<ToolViewerProps> = ({
                   />
                 </svg>
                 <span>
-                  {tool.category === "forms" || tool.category === "components"
+                  {tool.category === "forms" ||
+                  tool.category === "components" ||
+                  tool.category === "games"
                     ? "Open Form"
                     : "Open in Syntaxz"}
                 </span>
               </button>
               <p className="text-xs text-slate-500 mt-4">
-                {tool.category === "forms" || tool.category === "components"
+                {tool.category === "forms" ||
+                tool.category === "components" ||
+                tool.category === "games"
                   ? "Opens form in a new tab with live functionality"
                   : "Opens in a new tab with encrypted code"}
               </p>

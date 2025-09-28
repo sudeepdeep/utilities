@@ -321,12 +321,7 @@ const ToolViewer: React.FC<ToolViewerProps> = ({
         {activeTab === "code" ? (
           !isFree ? (
             // Show premium card for paid tools
-            <PremiumCard
-              title={tool.name}
-              description={tool.description}
-              price={tool.price || 0}
-              onPayNow={handlePayNow}
-            />
+            <PremiumCard price={tool.price || 0} onPayNow={handlePayNow} />
           ) : (
             <CodeBlock code={tool.code} language="javascript" />
           )
